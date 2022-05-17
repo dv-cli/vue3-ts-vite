@@ -2,12 +2,15 @@
 
 - vue3.2+Ts+Vite
 - [axios（ajax 请求）](https://www.kancloud.cn/yunye/axios/234845)
-- [naive-ui(UI 组件库)](https://www.naiveui.com/zh-CN/dark/docs/introduction) 尤大推荐
-- [vueuse(强大的函数库)](https://vueuse.org/) 尤大推荐
+- [naive-ui(UI 组件库)](https://www.naiveui.com/zh-CN/dark/docs/introduction) 尤雨溪官方推荐
+- [vueuse(强大的函数库)](https://vueuse.org/) 尤雨溪官方推荐
+- [pinia(状态管理工具，比 vuex 更丝滑)](https://pinia.vuejs.org/) 尤雨溪官方推荐
 
-## 本项目采用 yarn
+## 脚手架安装
 
-![](./src/assets/yarn.png)
+本项目目前已经和另一个[多页模板项目](https://github.com/ruanlin-kylin/vue3-vite-multiple-page)一起，支持通过`cdv-cli`脚手架来安装。
+
+[cdv-cli 脚手架使用方法点击查看](https://github.com/ruanlin-kylin/cdv-cli)
 
 ## 开发运行
 
