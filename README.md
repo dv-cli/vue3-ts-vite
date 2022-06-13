@@ -1,14 +1,14 @@
 ## 技术栈
 
-- vue3.2+Ts+Vite
-- [axios（ajax 请求）](https://www.kancloud.cn/yunye/axios/234845)
-- [naive-ui(UI 组件库)](https://www.naiveui.com/zh-CN/dark/docs/introduction) 尤雨溪官方推荐
-- [vueuse(强大的函数库)](https://vueuse.org/) 尤雨溪官方推荐
-- [pinia(状态管理工具，比 vuex 更丝滑)](https://pinia.vuejs.org/) 尤雨溪官方推荐
+- [vite](https://cn.vitejs.dev/) 尤大团队开发的新一代构建工具，急速启动，快速热载
+- [axios](https://www.kancloud.cn/yunye/axios/234845) 这个就不用介绍了吧，使用最广泛的 ajax 封装插件
+- [naive-ui](https://www.naiveui.com/zh-CN/dark/docs/introduction) 尤雨溪推荐 UI 库，TypeScript 语法，主题可调，为 vue3 而生
+- [vueuse](https://vueuse.org/) 尤雨溪推荐，可以理解为 vue3 的 hooks 库，专为 vues 设计
+- [pinia](https://pinia.vuejs.org/) 尤雨溪推荐，替代 vuex4，作者原话 pinia 就是 vuex5 了
 
 ## 脚手架安装
 
-本项目目前已经和另一个[多页模板项目](https://github.com/ruanlin-kylin/vue3-vite-multiple-page)一起，支持通过`cdv-cli`脚手架来安装。
+本项目目前支持通过`cdv-cli`脚手架来安装。
 
 [cdv-cli 脚手架使用方法点击查看](https://github.com/ruanlin-kylin/cdv-cli)
 
@@ -28,8 +28,6 @@
 ```
 
 ## 本项目 git Commit message 统一规范
-
-使用[Angular 团队提交规范](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)
 
 常用的修改项
 
