@@ -12,6 +12,8 @@
 
 [cdv-cli 脚手架使用方法点击查看](https://github.com/ruanlin-kylin/cdv-cli)
 
+![image](./src/assets/cdv1.png)
+
 ## 开发运行
 
 ```bash
@@ -40,9 +42,6 @@
 - test: 测试相关
 - docs: 文档/注释
 - chore: 依赖更新/脚手架配置修改等
-- workflow: 工作流改进
 - ci: 持续集成
-- types: 类型定义文件更改
-- wip: 开发中
 
 **[⬆ 返回顶部](#技术栈)**
