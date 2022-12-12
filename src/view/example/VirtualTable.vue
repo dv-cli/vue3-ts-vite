@@ -1,7 +1,19 @@
-<script setup lang="ts">
-import { h } from "vue";
-import { NDataTable } from "naive-ui";
-const columns = [
+<template>
+  <n-data-table :columns="columns" :data="data" :max-height="250" :scroll-x="1800" virtual-scroll />
+</template>
+
+<script lang="ts">
+import { h, defineComponent } from "vue";
+import type { DataTableColumns } from "naive-ui";
+
+type RowData = {
+  key: number;
+  name: string;
+  age: number;
+  address: string;
+};
+
+const columns: DataTableColumns<RowData> = [
   {
     type: "selection",
     fixed: "left",
@@ -49,21 +61,18 @@ const columns = [
   },
 ];
 
-const data = Array.apply(null, { length: 5000 }).map((_, index) => ({
-  key: index,
-  name: `Edward King ${index}`,
-  age: 32,
-  address: `London, Park Lane no. ${index}`,
-}));
+export default defineComponent({
+  setup() {
+    const data: RowData[] = Array.from({ length: 5000 }).map((_, index) => ({
+      key: index,
+      name: `Edward King ${index}`,
+      age: 32,
+      address: `London, Park Lane no. ${index}`,
+    }));
+    return {
+      data,
+      columns,
+    };
+  },
+});
 </script>
-
-<template>
-  <n-data-table
-    ref="table"
-    :columns="columns"
-    :data="data"
-    :max-height="250"
-    :scroll-x="1800"
-    virtual-scroll
-  />
-</template>

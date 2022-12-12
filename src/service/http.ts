@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import NProgress from "nprogress";
 
-axios.defaults.baseURL = "/";
+axios.defaults.baseURL = "/cnhis";
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post["Content-Type"] = "application/json;charset=UTF-8";
 
@@ -14,6 +14,8 @@ axios.interceptors.request.use(
     if (token)
       //@ts-ignore
       config.headers.token = token;
+
+    return config;
   },
   error => {
     return error;
@@ -53,7 +55,7 @@ const http: Http = {
         })
         .catch(err => {
           NProgress.done();
-          reject(err.data);
+          reject(err);
         });
     });
   },

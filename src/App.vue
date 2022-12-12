@@ -1,12 +1,25 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-</script>
-
 <template>
-  <router-view />
+  <n-config-provider :theme="darkTheme">
+    <n-message-provider>
+      <router-view />
+    </n-message-provider>
+  </n-config-provider>
 </template>
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+import { darkTheme, lightTheme } from "naive-ui";
+import type { GlobalTheme } from "naive-ui";
 
+export default defineComponent({
+  setup() {
+    return {
+      darkTheme,
+      lightTheme,
+      theme: ref<GlobalTheme | null>(null),
+    };
+  },
+});
+</script>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -15,6 +28,9 @@
   text-align: center;
   color: #2c3e50;
   height: 100%;
+  .n-config-provider {
+    height: 100%;
+  }
 }
 .test {
   color: @test-color;

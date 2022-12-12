@@ -1,11 +1,13 @@
 <template>
-  <h3>VueUse简单使用示例</h3>
   <div>
-    <div>鼠标指针当前的坐标：</div>
-    X：{{ x }};Y：{{ y }}
+    <h3>VueUse简单使用示例</h3>
+    <div>
+      <div>鼠标指针当前的坐标：</div>
+      X：{{ x }};Y：{{ y }}
+    </div>
+    <div>usePreferredDark判断用户是否设置了浏览器深色主题：{{ isDark }}</div>
+    <div>useLocalStorage存储api：{{ store }}</div>
   </div>
-  <div>usePreferredDark判断用户是否设置了浏览器深色主题：{{ isDark }}</div>
-  <div>useLocalStorage存储api：{{ store }}</div>
 </template>
 
 <script lang="ts">
