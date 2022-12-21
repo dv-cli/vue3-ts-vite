@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { getMenuListApi } from "@/service/api/login/mock";
-import { ObjectType } from "@/service/api/login/interface";
+import { getMenuListApi } from "@/service/api/mock";
+import { ObjectType } from "@/service/api/interface";
 import { getKeepAliveRouterName, getAllBreadcrumbList } from "@/utils/utils";
 
 interface GlobalState {

@@ -1,4 +1,4 @@
-import { ObjectType } from "@/service/api/login/interface";
+import { ObjectType } from "@/service/api/interface";
 
 /**
  * 递归获取keepAlive的组件name
@@ -73,4 +73,13 @@ export function treeToList(menuList: Menu.MenuOptions[]) {
   };
   dfs(menuList);
   return result;
+}
+
+/**
+ * 判断是否是函数
+ * @param val
+ * @returns
+ */
+export function isFunction(val: any): val is string {
+  return typeof val === "function";
 }

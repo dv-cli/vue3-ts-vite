@@ -14,3 +14,5 @@ declare namespace Menu {
     isKeepAlive: boolean;
   }
 }
+
+declare module "qs";

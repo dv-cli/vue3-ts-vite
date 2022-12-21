@@ -1,4 +1,4 @@
-import http from "@/service/http";
+import http from "@/service";
 import { LoginParams, ObjectType } from "./interface";
 
 const loginApi = (params: LoginParams) => http.post("/login", params);
