@@ -1,21 +1,32 @@
 <template>
-  <n-config-provider :theme="darkTheme">
+  <n-config-provider :theme="theme" :locale="locale" :date-locale="dateLocale">
     <n-message-provider>
       <router-view />
     </n-message-provider>
   </n-config-provider>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
-import { darkTheme, lightTheme } from "naive-ui";
+import { defineComponent, computed } from "vue";
+import { darkTheme, lightTheme, zhCN, dateZhCN } from "naive-ui";
 import type { GlobalTheme } from "naive-ui";
+import { useGlobalStore } from "@/store";
+import { storeToRefs } from "pinia";
 
 export default defineComponent({
   setup() {
+    const themes: Record<string, GlobalTheme> = { dark: darkTheme, light: lightTheme };
+    const langMap: Record<string, any> = { zhCN, dateZhCN };
+    const globalStore = useGlobalStore();
+    const { themeValue, langObj } = storeToRefs(globalStore);
+    const locale = langMap[langObj.value.language];
+    const dateLocale = langMap[langObj.value.dateLocale];
     return {
       darkTheme,
       lightTheme,
-      theme: ref<GlobalTheme | null>(null),
+      theme: computed(() => themes[themeValue.value]),
+      themeValue,
+      locale,
+      dateLocale,
     };
   },
 });

@@ -1,5 +1,6 @@
 <template>
-  <h1>首页首页首页首页首页首页首页首页首页首页首页首页首页首页首页</h1>
+  <h1></h1>
+  <n-date-picker />
 </template>
 
 <script setup lang="ts"></script>

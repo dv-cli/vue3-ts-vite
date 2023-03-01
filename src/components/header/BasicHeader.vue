@@ -4,13 +4,16 @@
       <Breadcrumb />
     </div>
     <div class="nav-right">
-      <n-button class="r16" text @click="toggleTheme">{{ isNight ? "浅色" : "深色" }}</n-button>
+      <n-button class="r16" text @click="toggleTheme">{{ isNight ? "深色" : "浅色" }}</n-button>
       <SvgIcon
         class="r16"
-        :name="isFullscreen ? 'full-screen' : 'exit-full-screen'"
+        :name="isFullscreen ? 'exit-full-screen' : 'full-screen'"
         @click="toggleScreen"
       />
-      <n-icon class="r16"><Language /></n-icon>
+
+      <n-dropdown :options="options" @select="handleSelect">
+        <n-icon class="r16"><Language /></n-icon>
+      </n-dropdown>
     </div>
   </nav>
 </template>
@@ -19,8 +22,10 @@
 import Breadcrumb from "./components/Breadcrumb.vue";
 import SvgIcon from "@/components/SvgIcon.vue";
 import { Language } from "@vicons/ionicons5";
-import { defineComponent, ref } from "vue";
-
+import { defineComponent, ref, nextTick } from "vue";
+import { useGlobalStore } from "@/store";
+import NProgress from "@/components/nprogress";
+import { useMessage, zhCN } from "naive-ui";
 export default defineComponent({
   components: {
     SvgIcon,
@@ -29,16 +34,37 @@ export default defineComponent({
     Breadcrumb,
   },
   setup() {
+    const options = [
+      { key: "zhCN", label: "中文 Chinese" },
+      { key: "enUS", label: "英文 English" },
+    ];
+    const message = useMessage();
+
+    const globalStore = useGlobalStore();
     const isFullscreen = ref<Boolean>(false);
     const isNight = ref<Boolean>(false);
-    const toggleScreen = () => (isFullscreen.value = !isFullscreen.value);
-    const toggleTheme = () => (isNight.value = !isNight.value);
+    const toggleScreen = () => {
+      isFullscreen.value = !isFullscreen.value;
+      globalStore.toggleFullScreen();
+    };
+    const toggleTheme = () => {
+      NProgress.start();
+      isNight.value = !isNight.value;
+      globalStore.themeValue = isNight.value ? "light" : "dark";
+      nextTick(() => NProgress.done());
+    };
 
+    const handleSelect = (key: string | number) => {
+      message.info(String(key));
+      globalStore.changeLanguage(String(key));
+    };
     return {
       toggleScreen,
       toggleTheme,
+      handleSelect,
       isFullscreen,
       isNight,
+      options,
     };
   },
 });
