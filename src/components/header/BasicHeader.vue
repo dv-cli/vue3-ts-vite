@@ -56,7 +56,7 @@ export default defineComponent({
 
     const handleSelect = (key: string | number) => {
       message.info(String(key));
-      globalStore.changeLanguage(String(key));
+      globalStore.changeLanguage({ language: String(key), dateLocale: "" });
     };
     return {
       toggleScreen,

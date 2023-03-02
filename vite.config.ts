@@ -5,6 +5,9 @@ import path from "path";
 import viteCompression from "vite-plugin-compression";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
+import qiankun from "vite-plugin-qiankun";
+
+const useDevMode = true;
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -15,6 +18,7 @@ export default defineConfig({
       // 指定symbolId格式
       symbolId: "icon-[dir]-[name]",
     }),
+    qiankun("iho-demo-index", { useDevMode }),
     // gzip压缩 生产环境生成 .gz 文件
     viteCompression({
       verbose: true,
@@ -55,5 +59,7 @@ export default defineConfig({
         drop_debugger: true,
       },
     },
+    cssCodeSplit: false,
   },
+  base: "/demo-index/web/",
 });
