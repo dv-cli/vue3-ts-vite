@@ -1,5 +1,9 @@
 <template>
-  <n-config-provider :theme="theme" :locale="locale" :date-locale="dateLocale">
+  <n-config-provider
+    :theme="theme"
+    :locale="localeData.locale"
+    :date-locale="localeData.dateLocale"
+  >
     <n-message-provider>
       <router-view />
     </n-message-provider>
@@ -7,7 +11,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed } from "vue";
-import { darkTheme, lightTheme, zhCN, dateZhCN } from "naive-ui";
+import { darkTheme, lightTheme, zhCN, enUS, dateZhCN, dateEnUS } from "naive-ui";
 import type { GlobalTheme } from "naive-ui";
 import { useGlobalStore } from "@/store";
 import { storeToRefs } from "pinia";
@@ -15,18 +19,21 @@ import { storeToRefs } from "pinia";
 export default defineComponent({
   setup() {
     const themes: Record<string, GlobalTheme> = { dark: darkTheme, light: lightTheme };
-    const langMap: Record<string, any> = { zhCN, dateZhCN };
     const globalStore = useGlobalStore();
-    const { themeValue, langObj } = storeToRefs(globalStore);
-    const locale = langMap[langObj.value.language];
-    const dateLocale = langMap[langObj.value.dateLocale];
+    const { themeValue, language } = storeToRefs(globalStore);
+
+    const localeData = computed(() => {
+      return language.value == "enUS"
+        ? { locale: enUS, dateLocale: dateEnUS }
+        : { locale: zhCN, dateLocale: dateZhCN };
+    });
+
     return {
       darkTheme,
       lightTheme,
       theme: computed(() => themes[themeValue.value]),
       themeValue,
-      locale,
-      dateLocale,
+      localeData,
     };
   },
 });

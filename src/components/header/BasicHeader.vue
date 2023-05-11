@@ -25,7 +25,9 @@ import { Language } from "@vicons/ionicons5";
 import { defineComponent, ref, nextTick } from "vue";
 import { useGlobalStore } from "@/store";
 import NProgress from "@/components/nprogress";
-import { useMessage, zhCN } from "naive-ui";
+import { useMessage } from "naive-ui";
+import type { DropdownOption } from "naive-ui";
+
 export default defineComponent({
   components: {
     SvgIcon,
@@ -54,8 +56,9 @@ export default defineComponent({
       nextTick(() => NProgress.done());
     };
 
-    const handleSelect = (key: string | number) => {
-      message.info(String(key));
+    const handleSelect = (key: string | number, options: DropdownOption) => {
+      message.info(String(key) + JSON.stringify(options));
+
       globalStore.changeLanguage(String(key));
     };
     return {
