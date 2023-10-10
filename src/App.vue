@@ -1,5 +1,5 @@
 <template>
-  <n-config-provider :theme="theme" :locale="locale" :date-locale="dateLocale">
+  <n-config-provider :theme="theme" :locale="localeData.locale" :date-locale="localeData.dateLocale">
     <n-message-provider>
       <n-dialog-provider>
         <n-notification-provider>
@@ -17,7 +17,7 @@
 <script lang="ts">
 import { useQiankunStore } from "@/store/qiankun";
 import { defineComponent, computed, toRefs } from "vue";
-import { darkTheme, lightTheme, zhCN, dateZhCN } from "naive-ui";
+import { darkTheme, lightTheme, zhCN, enUS, dateZhCN, dateEnUS } from "naive-ui";
 import type { GlobalTheme } from "naive-ui";
 import { useGlobalStore } from "@/store";
 import { storeToRefs } from "pinia";
@@ -27,11 +27,14 @@ export default defineComponent({
   setup() {
     const { microInclude, microRefresh } = toRefs(useQiankunStore());
     const themes: Record<string, GlobalTheme> = { dark: darkTheme, light: lightTheme };
-    const langMap: Record<string, any> = { zhCN, dateZhCN };
     const globalStore = useGlobalStore();
-    const { themeValue, langObj } = storeToRefs(globalStore);
-    const locale = langMap[langObj.value.language];
-    const dateLocale = langMap[langObj.value.dateLocale];
+    const { themeValue, language } = storeToRefs(globalStore);
+
+    const localeData = computed(() => {
+      return language.value == "enUS"
+        ? { locale: enUS, dateLocale: dateEnUS }
+        : { locale: zhCN, dateLocale: dateZhCN };
+    });
     const router = useRouter();
     // 根据缓存url，映射到具体组件名，实现缓存
     const keepIncludes = computed(() => {
@@ -49,8 +52,7 @@ export default defineComponent({
       lightTheme,
       theme: computed(() => themes[themeValue.value]),
       themeValue,
-      locale,
-      dateLocale,
+      localeData,
       microRefresh,
       keepIncludes,
     };
@@ -65,10 +67,12 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
   height: 100%;
+
   .n-config-provider {
     height: 100%;
   }
 }
+
 .test {
   color: @test-color;
 }

@@ -5,14 +5,12 @@
     </div>
     <div class="nav-right">
       <n-button class="r16" text @click="toggleTheme">{{ isNight ? "深色" : "浅色" }}</n-button>
-      <SvgIcon
-        class="r16"
-        :name="isFullscreen ? 'exit-full-screen' : 'full-screen'"
-        @click="toggleScreen"
-      />
+      <SvgIcon class="r16" :name="isFullscreen ? 'exit-full-screen' : 'full-screen'" @click="toggleScreen" />
 
       <n-dropdown :options="options" @select="handleSelect">
-        <n-icon class="r16"><Language /></n-icon>
+        <n-icon class="r16">
+          <Language />
+        </n-icon>
       </n-dropdown>
     </div>
   </nav>
@@ -25,7 +23,9 @@ import { Language } from "@vicons/ionicons5";
 import { defineComponent, ref, nextTick } from "vue";
 import { useGlobalStore } from "@/store";
 import NProgress from "@/components/nprogress";
-import { useMessage, zhCN } from "naive-ui";
+import { useMessage } from "naive-ui";
+import type { DropdownOption } from "naive-ui";
+
 export default defineComponent({
   components: {
     SvgIcon,
@@ -54,9 +54,10 @@ export default defineComponent({
       nextTick(() => NProgress.done());
     };
 
-    const handleSelect = (key: string | number) => {
-      message.info(String(key));
-      globalStore.changeLanguage({ language: String(key), dateLocale: "" });
+    const handleSelect = (key: string | number, options: DropdownOption) => {
+      message.info(String(key) + JSON.stringify(options));
+
+      globalStore.changeLanguage(String(key));
     };
     return {
       toggleScreen,
@@ -77,18 +78,21 @@ nav {
   align-items: center;
   height: 100%;
   padding: 0 8px;
+
   .nav-left {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 8px;
   }
+
   .nav-right {
     font-size: 20px;
     padding: 8px;
     margin-right: 36px;
     display: flex;
     align-items: center;
+
     .r16 {
       margin-right: 16px;
     }
