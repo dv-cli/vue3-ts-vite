@@ -9,10 +9,8 @@ interface GlobalState {
   userInfo?: ObjectType;
   themeValue: string;
   fullScreen: string;
-  langObj: langObjType;
+  language: string;
 }
-
-type langObjType = { language: string; dateLocale: string };
 
 export const useGlobalStore = defineStore({
   id: "globalStore",
@@ -22,10 +20,7 @@ export const useGlobalStore = defineStore({
     userInfo: {},
     themeValue: "dark",
     fullScreen: "full-screen",
-    langObj: {
-      language: "zhCN",
-      dateLocale: "dateZhCN",
-    },
+    language: "zhCN",
   }),
   getters: {
     nameLength: state => state.name.length,
@@ -53,8 +48,8 @@ export const useGlobalStore = defineStore({
         }
       }
     },
-    changeLanguage(langObj: langObjType) {
-      this.langObj = langObj;
+    changeLanguage(language: string) {
+      this.language = language;
     },
   },
 });
