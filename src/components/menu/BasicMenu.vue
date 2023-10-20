@@ -50,7 +50,7 @@ export default defineComponent({
   },
   setup() {
     const message = useMessage();
-    debugger;
+
     const globalStore = useGlobalStore();
     const menuList = computed(() => globalStore.menuListGet);
     const menuOptions = computed(() => getNaiveMenuList(menuList.value));

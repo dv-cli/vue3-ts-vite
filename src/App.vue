@@ -1,5 +1,9 @@
 <template>
-  <n-config-provider :theme="theme" :locale="localeData.locale" :date-locale="localeData.dateLocale">
+  <n-config-provider
+    :theme="theme"
+    :locale="localeData.locale"
+    :date-locale="localeData.dateLocale"
+  >
     <n-message-provider>
       <n-dialog-provider>
         <n-notification-provider>
@@ -60,7 +64,7 @@ export default defineComponent({
 });
 </script>
 <style lang="less">
-#app {
+#demo-index {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
