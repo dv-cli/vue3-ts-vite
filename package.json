@@ -15,7 +15,6 @@
   "dependencies": {
     "@vueuse/core": "^7.5.5",
     "axios": "^0.25.0",
-    "c-monitor": "^1.0.1",
     "naive-ui": "^2.24.7",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-rc.10",

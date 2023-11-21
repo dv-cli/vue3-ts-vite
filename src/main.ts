@@ -151,7 +151,9 @@ async function render(props: any) {
     .use(naive)
     .use(createPinia())
     .mount(
-      typeof container === "string" ? container : (container.querySelector("#app") as Element)
+      typeof container === "string"
+        ? container
+        : (container.querySelector("#demo-index") as Element)
     );
 
   // 如果主应用传递了默认路径，直接跳转至默认路径
@@ -161,7 +163,7 @@ async function render(props: any) {
 }
 
 if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
-  render({ container: "#app" });
+  render({ container: "#demo-index" });
 }
 
 renderWithQiankun({

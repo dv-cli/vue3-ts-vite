@@ -12,7 +12,9 @@
       />
 
       <n-dropdown :options="options" @select="handleSelect">
-        <n-icon class="r16"><Language /></n-icon>
+        <n-icon class="r16">
+          <Language />
+        </n-icon>
       </n-dropdown>
     </div>
   </nav>
@@ -80,18 +82,21 @@ nav {
   align-items: center;
   height: 100%;
   padding: 0 8px;
+
   .nav-left {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 8px;
   }
+
   .nav-right {
     font-size: 20px;
     padding: 8px;
     margin-right: 36px;
     display: flex;
     align-items: center;
+
     .r16 {
       margin-right: 16px;
     }

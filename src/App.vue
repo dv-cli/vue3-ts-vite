@@ -39,7 +39,6 @@ export default defineComponent({
         ? { locale: enUS, dateLocale: dateEnUS }
         : { locale: zhCN, dateLocale: dateZhCN };
     });
-
     const router = useRouter();
     // 根据缓存url，映射到具体组件名，实现缓存
     const keepIncludes = computed(() => {
@@ -65,17 +64,19 @@ export default defineComponent({
 });
 </script>
 <style lang="less">
-#app {
+#demo-index {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   height: 100%;
+
   .n-config-provider {
     height: 100%;
   }
 }
+
 .test {
   color: @test-color;
 }
