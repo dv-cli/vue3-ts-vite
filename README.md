@@ -1,3 +1,4 @@
+
 ## 技术栈
 
 - [vite](https://cn.vitejs.dev/) 尤大团队开发的新一代构建工具，急速启动，快速热载
@@ -5,14 +6,6 @@
 - [naive-ui](https://www.naiveui.com/zh-CN/dark/docs/introduction) 尤雨溪推荐 UI 库，TypeScript 语法，主题可调，为 vue3 而生
 - [vueuse](https://vueuse.org/) 尤雨溪推荐，可以理解为 vue3 的 hooks 库，专为 vues 设计
 - [pinia](https://pinia.vuejs.org/) 尤雨溪推荐，替代 vuex4，作者原话 pinia 就是 vuex5 了
-
-## 脚手架安装
-
-本项目目前支持通过`cdv-cli`脚手架来安装。
-
-[cdv-cli 脚手架使用方法点击查看](https://github.com/ruanlin-kylin/cdv-cli)
-
-![image](./src/assets/cdv1.png)
 
 ## 开发运行
 

@@ -38,7 +38,7 @@ class RequestHttp {
       },
       (error: AxiosError) => {
         return Promise.reject(error);
-      }
+      },
     );
 
     /**
@@ -72,7 +72,7 @@ class RequestHttp {
         if (response) checkStatus(response.status);
 
         return Promise.reject(error);
-      }
+      },
     );
   }
 

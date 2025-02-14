@@ -1,3 +1,10 @@
 # 忽略格式化文件 (根据项目需要自行添加)
+.DS_Store
 node_modules
 dist
+dist-ssr
+*.local
+.npmrc
+dev-dist
+dist_electron
+auto-imports.d.ts

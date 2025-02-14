@@ -12,8 +12,7 @@ interface GlobalState {
   language: string;
 }
 
-export const useGlobalStore = defineStore({
-  id: "globalStore",
+export const useGlobalStore = defineStore("globalStore", {
   state: (): GlobalState => ({
     name: "全局store",
     menuList: [],
